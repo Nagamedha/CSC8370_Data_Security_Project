@@ -1,147 +1,119 @@
-{
-  "nbformat": 4,
-  "nbformat_minor": 0,
-  "metadata": {
-    "colab": {
-      "provenance": []
-    },
-    "kernelspec": {
-      "name": "python3",
-      "display_name": "Python 3"
-    },
-    "language_info": {
-      "name": "python"
-    }
-  },
-  "cells": [
-    {
-      "cell_type": "markdown",
-      "source": [
-        "# **CSC8370 Data Security Project: README**\n",
-        "\n",
-        "## Project Overview\n",
-        "This project implements machine learning solutions for MNIST handwritten digit classification. The project is divided into three levels, each with increasing complexity:\n",
-        "\n",
-        "- **Level 1: Centralized Learning**\n",
-        "- **Level 2: Federated Learning**\n",
-        "- **Level 3: Robust Federated Learning with Malicious Client Detection**\n",
-        "\n",
-        "The models are evaluated on accuracy, and output files are generated to facilitate further analysis.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Team Members\n",
-        "- **Nagamedha Sakhamuri** – 002828574 – nsakhamuri1@student.gsu.edu\n",
-        "- **Pranav Chowdary Nagothu** – 002852538 – pnagothu1@student.gsu.edu\n",
-        "\n",
-        "**Contributions:** Both team members collaborated equally on all levels, including coding, testing, and documentation.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Project Structure\n",
-        "The project consists of three Python scripts:\n",
-        "\n",
-        "1. **`Level1_Final.ipynb`**: Implements centralized learning for MNIST classification.\n",
-        "2. **`Level2_Final.ipynb`**: Implements federated learning with 10 clients.\n",
-        "3. **`Level3_Final.ipynb`**: Implements federated learning with malicious client detection and robust aggregation.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Requirements\n",
-        "The project requires the following Python libraries:\n",
-        "\n",
-        "- `torch`\n",
-        "- `torchvision`\n",
-        "- `matplotlib`\n",
-        "- `random`\n",
-        "- `copy`\n",
-        "- `google.colab` (for file downloads in Colab)\n",
-        "\n",
-        "Install missing libraries using:\n",
-        "```bash\n",
-        "!pip install torch torchvision matplotlib\n",
-        "```\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Instructions\n",
-        "\n",
-        "### Setup\n",
-        "1. Open Google Colab.\n",
-        "2. Upload the desired level script (`Level1_Final.ipynb`, `Level2_Final.ipynb`, or `Level3_Final.ipynb`).\n",
-        "3. Run the script step by step or all at once.\n",
-        "4. Ensure the runtime type is set to GPU for faster execution:\n",
-        "   - Navigate to **Runtime > Change runtime type**.\n",
-        "   - Set **Hardware Accelerator** to `GPU`.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "### Level 1: Centralized Learning\n",
-        "- **Overview**: All MNIST data is centralized, and a Convolutional Neural Network (CNN) is trained to classify the digits.\n",
-        "- **Execution**:\n",
-        "  1. Open `Level1_Final.ipynb` in Google Colab.\n",
-        "  2. Run the script to train the model.\n",
-        "- **Output Files**:\n",
-        "  - **`mnist_training.log`**: Logs training and testing accuracy for each epoch.\n",
-        "  - **`best_mnist_model.pth`**: Stores the best-performing model's parameters.\n",
-        "  - **`mnist_performance_graph.png`**: Visualizes accuracy over epochs.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "### Level 2: Federated Learning\n",
-        "- **Overview**: Implements federated learning with 10 clients, each holding a partition of the MNIST dataset. Models are trained locally and aggregated on a central server.\n",
-        "- **Execution**:\n",
-        "  1. Open `Level1_Final.ipynb` in Google Colab.\n",
-        "  2. Run the script to simulate federated learning.\n",
-        "- **Output Files**:\n",
-        "  - **`level2_training.log`**: Logs accuracy values for each global epoch.\n",
-        "  - **`federated_mnist_model.pth`**: Stores the aggregated global model's parameters.\n",
-        "  - **`performance_graph_level2.png`**: Visualizes accuracy over federated learning rounds.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "### Level 3: Robust Federated Learning with Malicious Client Detection\n",
-        "- **Overview**: Introduces malicious clients that submit falsified updates. Implements mechanisms to detect and mitigate the effects of such clients using robust aggregation.\n",
-        "- **Execution**:\n",
-        "  1. Open `Level1_Final.ipynb` in Google Colab.\n",
-        "  2. Run the script to simulate federated learning with malicious client detection.\n",
-        "- **Output Files**:\n",
-        "  - **`federated_mnist_level3_model.pth`**: Stores the final model parameters after robust aggregation.\n",
-        "  - **`level3_accuracy_graph.png`**: Visualizes accuracy during the training process.\n",
-        "  - **`federated_learning_level3.log`**: Logs accuracy values and detected malicious clients per epoch.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Performance Analysis\n",
-        "\n",
-        "The performance of all three levels is analyzed and visualized in a combined graph:\n",
-        "\n",
-        "1. **Level 1: Centralized Learning**\n",
-        "   - Accuracy consistently improves over 20 epochs, reaching 99.36%.\n",
-        "2. **Level 2: Federated Learning**\n",
-        "   - Accuracy improves steadily over 10 rounds, reaching 98.01%.\n",
-        "3. **Level 3: Robust Federated Learning**\n",
-        "   - With malicious client detection, accuracy improves over 15 rounds, reaching 98.52%.\n",
-        "\n",
-        "- **Output File**:\n",
-        "  - **`accuracy_comparison_graph.png`**: Shows accuracy comparison across all three levels.\n",
-        "- **Instructions to Hardcode Data**:\n",
-        "  Update the `level1_accuracies`, `level2_accuracies`, and `level3_accuracies` lists with your performance results in the script to regenerate the graph.\n",
-        "\n",
-        "---\n",
-        "\n",
-        "## Notes\n",
-        "- Ensure that output files are downloaded after execution using the integrated download functionality.\n",
-        "- Use GPU acceleration to avoid long training times.\n",
-        "- For Level 3, modify thresholds or parameters to experiment with detecting and mitigating malicious clients.\n",
-        "- Duplicate or replace output files automatically if they already exist during multiple runs.\n",
-        "\n",
-        "---\n",
-        "\n"
-      ],
-      "metadata": {
-        "id": "Wd3pk2Ia5Wy8"
-      }
-    }
-  ]
-}
+# **CSC8370 Data Security Project: README**
+
+## Project Overview
+This project implements machine learning solutions for MNIST handwritten digit classification. The project is divided into three levels, each with increasing complexity:
+
+- **Level 1: Centralized Learning**
+- **Level 2: Federated Learning**
+- **Level 3: Robust Federated Learning with Malicious Client Detection**
+
+The models are evaluated on accuracy, and output files are generated to facilitate further analysis.
+
+---
+
+## Team Members
+- **Nagamedha Sakhamuri** – 002828574 – nsakhamuri1@student.gsu.edu
+- **Pranav Chowdary Nagothu** – 002852538 – pnagothu1@student.gsu.edu
+
+**Contributions:** Both team members collaborated equally on all levels, including coding, testing, and documentation.
+
+---
+
+## Project Structure
+The project consists of three Python scripts:
+
+1. **`Level1_Final.ipynb`**: Implements centralized learning for MNIST classification.
+2. **`Level2_Final.ipynb`**: Implements federated learning with 10 clients.
+3. **`Level3_Final.ipynb`**: Implements federated learning with malicious client detection and robust aggregation.
+
+---
+
+## Requirements
+The project requires the following Python libraries:
+
+- `torch`
+- `torchvision`
+- `matplotlib`
+- `random`
+- `copy`
+- `google.colab` (for file downloads in Colab)
+
+Install missing libraries using:
+```bash
+!pip install torch torchvision matplotlib
+```
+
+---
+## Instructions
+### Setup
+1. Open Google Colab.
+2. Upload the desired level script (`Level1_Final.ipynb`, `Level2_Final.ipynb`, or `Level3_Final.ipynb`).
+3. Run the script step by step or all at once.
+4. Ensure the runtime type is set to GPU for faster execution:
+   - Navigate to **Runtime > Change runtime type**.
+   - Set **Hardware Accelerator** to `GPU`.
+
+---
+
+### Level 1: Centralized Learning
+- **Overview**: All MNIST data is centralized, and a Convolutional Neural Network (CNN) is trained to classify the digits.
+- **Execution**:
+  1. Open `Level1_Final.ipynb` in Google Colab.
+  2. Run the script to train the model.
+- **Output Files**:
+  - **`mnist_training.log`**: Logs training and testing accuracy for each epoch.
+  - **`best_mnist_model.pth`**: Stores the best-performing model's parameters.
+  - **`mnist_performance_graph.png`**: Visualizes accuracy over epochs.
+
+---
+
+### Level 2: Federated Learning
+- **Overview**: Implements federated learning with 10 clients, each holding a partition of the MNIST dataset. Models are trained locally and aggregated on a central server.
+- **Execution**:
+  1. Open `Level1_Final.ipynb` in Google Colab.
+  2. Run the script to simulate federated learning.
+- **Output Files**:
+  - **`level2_training.log`**: Logs accuracy values for each global epoch.
+  - **`federated_mnist_model.pth`**: Stores the aggregated global model's parameters.
+  - **`performance_graph_level2.png`**: Visualizes accuracy over federated learning rounds.
+
+---
+
+### Level 3: Robust Federated Learning with Malicious Client Detection
+- **Overview**: Introduces malicious clients that submit falsified updates. Implements mechanisms to detect and mitigate the effects of such clients using robust aggregation.
+- **Execution**:
+  1. Open `Level1_Final.ipynb` in Google Colab.
+  2. Run the script to simulate federated learning with malicious client detection.
+- **Output Files**:
+  - **`federated_mnist_level3_model.pth`**: Stores the final model parameters after robust aggregation.
+  - **`level3_accuracy_graph.png`**: Visualizes accuracy during the training process.
+  - **`federated_learning_level3.log`**: Logs accuracy values and detected malicious clients per epoch.
+
+---
+
+## Performance Analysis
+
+The performance of all three levels is analyzed and visualized in a combined graph:
+
+1. **Level 1: Centralized Learning**
+   - Accuracy consistently improves over 20 epochs, reaching 99.36%.
+2. **Level 2: Federated Learning**
+   - Accuracy improves steadily over 10 rounds, reaching 98.01%.
+3. **Level 3: Robust Federated Learning**
+   - With malicious client detection, accuracy improves over 15 rounds, reaching 98.52%.
+
+- **Output File**:
+  - **`accuracy_comparison_graph.png`**: Shows accuracy comparison across all three levels.
+- **Instructions to Hardcode Data**:
+  Update the `level1_accuracies`, `level2_accuracies`, and `level3_accuracies` lists with your performance results in the script to regenerate the graph.
+
+---
+
+## Notes
+- Ensure that output files are downloaded after execution using the integrated download functionality.
+- Use GPU acceleration to avoid long training times.
+- For Level 3, modify thresholds or parameters to experiment with detecting and mitigating malicious clients.
+- Duplicate or replace output files automatically if they already exist during multiple runs.
+
+---
+
